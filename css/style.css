@@ -1458,3 +1458,128 @@ background: linear-gradient(135deg, #7f0000, #ff3b3b);  position: relative;
     align-items: center;
   }
 }
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* HEADER */
+.site-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+/* CONTAINER */
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.brand-logo {
+    height: 45px;
+}
+
+/* NAV */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* HOVER UNDERLINE */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: red;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: red;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* CTA BUTTON */
+.cta-button {
+    padding: 8px 18px;
+    background: red;
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background: black;
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: black;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-navigation {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .main-navigation.active {
+        display: flex;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .header-cta {
+        display: none;
+    }
+}

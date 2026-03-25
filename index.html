@@ -25,31 +25,38 @@
 <body>
 
     <!-- HEADER -->
-    <header class="site-header">
-        <div class="header-container">
-            <!-- BRAND -->
-            <div class="brand">
-                <!-- <div class="brand-logo" aria-label="Om Jain Logo">OJ</div> -->
-                <img class="brand-logo" src="images/Logo transparent.png" alt="Om Jain - Digital Marketing Expert">
-            </div>
-            <!-- NAVIGATION -->
-            <nav class="main-navigation" aria-label="Main Navigation">
-                <ul class="nav-list">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <!-- CTA -->
-            <div class="header-cta">
-                <a href="#contact" class="cta-button">Get Started</a>
-            </div>
-        </div>
-    </header>
+  <header class="site-header">
+    <div class="header-container">
 
+        <!-- BRAND -->
+        <div class="brand">
+            <img class="brand-logo" src="images/Logo transparent.png" alt="Om Jain Logo">
+        </div>
+
+        <!-- HAMBURGER -->
+        <div class="menu-toggle" id="menu-toggle">
+            ☰
+        </div>
+
+        <!-- NAVIGATION -->
+        <nav class="main-navigation" id="nav">
+            <ul class="nav-list">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- CTA -->
+        <div class="header-cta">
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+
+    </div>
+</header>
     <section id="home" class="hero-section">
         <div class="container hero-container">
             <!-- LEFT CONTENT -->
@@ -609,6 +616,40 @@
         </div>
 
     </footer>
+    <script>
+    // Toggle mobile menu
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav");
+
+    toggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+
+        // Change icon ☰ ↔ ✖
+        if (nav.classList.contains("active")) {
+            toggle.innerHTML = "✖";
+        } else {
+            toggle.innerHTML = "☰";
+        }
+    });
+
+    // Close menu when clicking a link (better UX)
+    const links = document.querySelectorAll(".nav-link");
+
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            nav.classList.remove("active");
+            toggle.innerHTML = "☰";
+        });
+    });
+
+    // Optional: Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+            nav.classList.remove("active");
+            toggle.innerHTML = "☰";
+        }
+    });
+</script>
 
 </body>
 
